@@ -1,18 +1,20 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
+import 'react-native-gesture-handler';
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import HomeScreen from './src/screens/HomeScreen';
+import ClassListScreen from './src/screens/ClassListScreen';
+
+const MainStack = createStackNavigator();
 
 const App: React.FC = () => {
   return (
-    <SafeAreaView>
-      <Text>Hello world</Text>
-    </SafeAreaView>
+    <NavigationContainer>
+      <MainStack.Navigator>
+        <MainStack.Screen name="Home" component={HomeScreen} />
+        <MainStack.Screen name="ClassList" component={ClassListScreen} />
+      </MainStack.Navigator>
+    </NavigationContainer>
   );
 };
 
