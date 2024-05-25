@@ -12,44 +12,15 @@ const api = axios.create({
   },
 });
 
-// Define TypeScript interfaces for the expected data structures
-
-interface Class {
-  id: string;
-  name: string;
-  students?: Student[];
-  lessons?: Lesson[];
-}
-
-interface Student {
-  id: string;
-  name: string;
-}
-
-interface Lesson {
-  id: string;
-  name: string;
-}
-
-interface Employee {
-  id: string;
-  name: string;
-  classes?: Class[];
-}
-
-interface Period {
-  id: string;
-  name: string;
-}
-
 // Function to get employee details including classes
 export const getEmployeeDetails = async (
   employeeId: string,
 ): Promise<Employee> => {
   try {
     const response = await api.get<Employee>(
-      `/${SCHOOL_ID}/employees/${employeeId}?include=classes`,
+      `/${SCHOOL_ID}/employees/${employeeId}?include=classes.lessons.period`,
     );
+
     return response.data;
   } catch (error) {
     console.error('Error fetching employee details:', error);
@@ -61,22 +32,12 @@ export const getEmployeeDetails = async (
 export const getClassDetails = async (classId: string): Promise<Class> => {
   try {
     const response = await api.get<Class>(
-      `/${SCHOOL_ID}/classes/${classId}?has_students=true&per_page=1&include=students,lessons`,
+      `/${SCHOOL_ID}/classes/${classId}?has_students=true&include=students`,
     );
+
     return response.data;
   } catch (error) {
     console.error('Error fetching class details:', error);
-    throw error;
-  }
-};
-
-// Function to get period details
-export const getPeriodDetails = async (periodId: string): Promise<Period> => {
-  try {
-    const response = await api.get<Period>(`/${SCHOOL_ID}/periods/${periodId}`);
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching period details:', error);
     throw error;
   }
 };
