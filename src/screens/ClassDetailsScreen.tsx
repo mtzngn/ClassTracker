@@ -3,6 +3,7 @@ import {View, StyleSheet} from 'react-native';
 import {RouteProp} from '@react-navigation/native';
 import {ScrollView} from 'react-native-gesture-handler';
 import CTText from '../common/CTText';
+import {bg, white, black, gray, lightGray} from '../themes/colors';
 
 interface Student {
   forename: string;
@@ -40,7 +41,7 @@ const ClassDetailsScreen: React.FC<ClassDetailsScreenProps> = ({route}) => {
 const styles = StyleSheet.create({
   container: {
     padding: 16,
-    backgroundColor: '#f9f9f9', // Light background color
+    backgroundColor: bg,
   },
   header: {
     flexDirection: 'row',
@@ -54,19 +55,19 @@ const styles = StyleSheet.create({
   },
   time: {
     fontSize: 16,
-    color: '#666',
+    color: gray,
   },
   separator: {
     height: 1,
-    backgroundColor: '#ddd',
+    backgroundColor: lightGray,
     marginBottom: 16,
   },
   studentContainer: {
     marginBottom: 8,
     padding: 12,
-    backgroundColor: '#fff',
+    backgroundColor: white,
     borderRadius: 8,
-    shadowColor: '#000',
+    shadowColor: black,
     shadowOpacity: 0.1,
     shadowOffset: {width: 0, height: 2},
     shadowRadius: 4,

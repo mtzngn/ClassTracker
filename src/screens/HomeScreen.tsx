@@ -6,6 +6,7 @@ import CTInput from '../common/CTInput';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {getEmployeeDetails} from '../api/api';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {white, primary, bg} from '../themes/colors';
 
 type RootStackParamList = {
   Home: undefined;
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: '100%',
     width: '100%',
-    backgroundColor: '#fff',
+    backgroundColor: bg,
   },
   label: {
     width: '80%',
@@ -104,10 +105,11 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#4368FA',
+    backgroundColor: primary,
   },
   continueText: {
-    color: '#fff',
+    color: white,
+    fontWeight: 'bold',
   },
 });
 

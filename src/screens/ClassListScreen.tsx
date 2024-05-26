@@ -6,6 +6,7 @@ import ClassCard from '../components/ClassCard';
 import CTText from '../common/CTText';
 import {getClassDetails} from '../api/api';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {bg} from '../themes/colors';
 
 type RootStackParamList = {
   ClassList: {classList: ClassList[]};
@@ -87,7 +88,7 @@ const ClassListScreen: React.FC<ClassListScreenProps> = ({
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.container}>
       {days.map((day, index) => (
         <View key={index}>
           <CTText style={styles.dayText} key={day}>
@@ -101,6 +102,9 @@ const ClassListScreen: React.FC<ClassListScreenProps> = ({
 };
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: bg,
+  },
   dayText: {
     fontSize: 28,
     fontWeight: 'normal',

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import {TextInput, StyleSheet, TextInputProps} from 'react-native';
+import {lightGray} from '../themes/colors';
 
 type CTInputProps = TextInputProps & {
   customStyle?: object;
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: 'Avenir-Black',
     height: 40,
-    borderColor: '#dcdfe6',
+    borderColor: lightGray,
     borderWidth: 1,
     borderRadius: 4,
   },

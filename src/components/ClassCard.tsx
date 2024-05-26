@@ -1,6 +1,8 @@
 // ClassCard.tsx
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import CTText from '../common/CTText';
+import {white, black, primary} from '../themes/colors';
 
 type ClassCardProps = {
   id: string;
@@ -12,7 +14,7 @@ const ClassCard: React.FC<ClassCardProps> = ({name, onPress}) => {
   return (
     <TouchableOpacity style={styles.card} onPress={onPress}>
       <View style={styles.edge} />
-      <Text style={styles.title}>{name}</Text>
+      <CTText style={styles.title}>{name}</CTText>
     </TouchableOpacity>
   );
 };
@@ -22,12 +24,12 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: white,
     height: 50,
     marginVertical: 4,
     marginHorizontal: 16,
     borderRadius: 8,
-    shadowColor: '#000',
+    shadowColor: black,
     shadowOpacity: 0.1,
     shadowRadius: 4,
     shadowOffset: {width: 0, height: 2},
@@ -42,7 +44,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 8,
     borderTopLeftRadius: 8,
     marginRight: 8,
-    backgroundColor: '#4368FA',
+    backgroundColor: primary,
   },
 });
 
