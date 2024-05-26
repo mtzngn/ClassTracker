@@ -10,12 +10,14 @@ interface Employee {
   };
 }
 
-interface FilteredEmployeeDetails {
+interface ClassList {
   id: string;
   name: string;
   lessons: {
     id: string;
     day: string;
+    startTime: string;
+    endTime: string;
   }[];
 }
 
@@ -32,13 +34,16 @@ interface Lesson {
   id: string;
   day: string;
   period: ApiResponse<Period>;
+  employee: string;
 }
 
 interface Student {
-  forname: string;
+  forename: string;
   surname: string;
 }
 
 interface Period {
   day: string;
+  start_time: string;
+  end_time: string;
 }

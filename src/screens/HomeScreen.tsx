@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Alert, StyleSheet} from 'react-native';
+import {View, Alert, StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import CTText from '../common/CTText';
 import CTInput from '../common/CTInput';
@@ -9,7 +9,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 
 type RootStackParamList = {
   Home: undefined;
-  ClassList: {filteredEmployee: FilteredEmployeeDetails[]};
+  ClassList: {classList: ClassList[]};
 };
 
 type HomeScreenProps = {
@@ -19,15 +19,20 @@ type HomeScreenProps = {
 const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
   const [employeeID, setEmployeeID] = useState('A2082387062');
 
-  const filteredEmployeeDetails = (employeeData: Employee) => {
+  const extractClassList = (employeeData: Employee) => {
+    // We don't need all the data that is available, filter here whats needed.
     const classes = employeeData?.data?.classes?.data || [];
     return classes.map((classItem: Class) => ({
       id: classItem.id,
       name: classItem.name,
-      lessons: classItem.lessons.data.map(lessonItem => ({
-        id: lessonItem.id,
-        day: lessonItem.period.data.day,
-      })),
+      lessons: classItem.lessons.data
+        .filter(lessonItem => lessonItem.employee === employeeID)
+        .map(lessonItem => ({
+          id: lessonItem.id,
+          day: lessonItem.period.data.day,
+          startTime: lessonItem.period.data.start_time,
+          endTime: lessonItem.period.data.end_time,
+        })),
     }));
   };
 
@@ -40,11 +45,10 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
     }
     try {
       const employeeData: Employee = await getEmployeeDetails(employeeID);
-      const filteredEmployee: FilteredEmployeeDetails[] =
-        filteredEmployeeDetails(employeeData);
-      navigation.navigate('ClassList', {filteredEmployee});
+      const classList: ClassList[] = extractClassList(employeeData);
+
+      navigation.navigate('ClassList', {classList});
     } catch (error) {
-      console.error(error);
       Alert.alert(
         'Error',
         'Employee details are not found. Make sure you have entered correct ID',
@@ -55,36 +59,48 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <CTText>Please enter your teacher ID</CTText>
+      <CTText style={styles.label}>Please enter your teacher ID</CTText>
       <CTInput
         style={styles.idInput}
         value={employeeID}
         maxLength={11}
         onChangeText={setEmployeeID}
       />
-      <TouchableOpacity style={styles.continueButton} onPress={handleContinue}>
-        <CTText style={styles.continueText}>Continue</CTText>
-      </TouchableOpacity>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          style={styles.continueButton}
+          onPress={handleContinue}>
+          <CTText style={styles.continueText}>Continue</CTText>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',
     width: '100%',
+    backgroundColor: '#fff',
+  },
+  label: {
+    width: '80%',
+    fontWeight: 'normal',
   },
   idInput: {
     width: '80%',
     paddingHorizontal: 5,
     marginBottom: 20,
   },
+  buttonContainer: {
+    width: '80%',
+  },
   continueButton: {
     height: 40,
-    width: 80,
-    marginBottom: '10%',
+    width: '100%',
     borderRadius: 4,
     justifyContent: 'center',
     alignItems: 'center',
