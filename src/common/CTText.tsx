@@ -18,6 +18,7 @@ const CTText: React.FC<CTTextProps> = ({style, children, ...rest}) => {
 const styles = StyleSheet.create({
   text: {
     fontSize: 14,
+    fontWeight: 'normal',
     fontFamily: 'Avenir-Black',
   },
 });
