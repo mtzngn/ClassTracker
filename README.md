@@ -14,7 +14,7 @@ This is an application built with React Native to help teachers see which studen
 ### Installation
 
 1. Clone the repository:
-   `git clone https://github.com/mtzngn/ClassTracker.git`\*\*\*
+   `git clone https://github.com/mtzngn/ClassTracker.git`<br>
    `cd ClassTracker`
 
 2. Install dependencies:
