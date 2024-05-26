@@ -14,19 +14,19 @@ This is an application built with React Native to help teachers see which studen
 ### Installation
 
 1. Clone the repository:
-   `git clone https://github.com/mtzngn/ClassTracker.git`
+   `git clone https://github.com/mtzngn/ClassTracker.git`---
    `cd ClassTracker`
 
 2. Install dependencies:
-   `yarn install`
-   then do cd ios pod install
+   `yarn install`---
+   `cd ios && pod install && cd ..`
 
 3. Create a .env file in the root directory and add your API token:
    API_TOKEN=your_api_token_here
 
 4. Run the application with:
-   `yarn start`
-   For ios:
-   `yarn run ios`
-   For android:
+   `yarn start`---
+   For ios:---
+   `yarn run ios`---
+   For android:---
    `yarn run android`
