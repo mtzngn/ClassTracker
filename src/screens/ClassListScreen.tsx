@@ -89,14 +89,21 @@ const ClassListScreen: React.FC<ClassListScreenProps> = ({
 
   return (
     <ScrollView style={styles.container}>
-      {days.map((day, index) => (
-        <View key={index}>
-          <CTText style={styles.dayText} key={day}>
-            {day}
-          </CTText>
-          {renderClassesForDay(day)}
-        </View>
-      ))}
+      {classList && classList.length > 0 ? (
+        days.map(
+          (day, index) =>
+            classesForDay(classList, day).length > 0 && (
+              <View key={index}>
+                <CTText style={styles.dayText} key={day}>
+                  {day}
+                </CTText>
+                {renderClassesForDay(day)}
+              </View>
+            ),
+        )
+      ) : (
+        <CTText>No classes to show</CTText>
+      )}
     </ScrollView>
   );
 };
