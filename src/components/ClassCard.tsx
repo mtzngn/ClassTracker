@@ -8,20 +8,23 @@ type ClassCardProps = {
   onPress: () => void;
 };
 
-const ClassCard: React.FC<ClassCardProps> = ({id, name, onPress}) => {
+const ClassCard: React.FC<ClassCardProps> = ({name, onPress}) => {
   return (
     <TouchableOpacity style={styles.card} onPress={onPress}>
+      <View style={styles.edge} />
       <Text style={styles.title}>{name}</Text>
-      <Text style={styles.subtitle}>ID: {id}</Text>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    flexDirection: 'row',
     backgroundColor: '#fff',
-    padding: 15,
-    marginVertical: 8,
+    height: 50,
+    marginVertical: 4,
     marginHorizontal: 16,
     borderRadius: 8,
     shadowColor: '#000',
@@ -32,11 +35,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    fontWeight: 'bold',
   },
-  subtitle: {
-    fontSize: 14,
-    color: '#666',
+  edge: {
+    width: 4,
+    height: '100%',
+    borderBottomLeftRadius: 8,
+    borderTopLeftRadius: 8,
+    marginRight: 8,
+    backgroundColor: '#4368FA',
   },
 });
 
