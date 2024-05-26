@@ -12,7 +12,7 @@ const api = axios.create({
   },
 });
 
-// Function to get employee details including classes
+// Get employee details including classes
 export const getEmployeeDetails = async (
   employeeId: string,
 ): Promise<Employee> => {
@@ -28,7 +28,7 @@ export const getEmployeeDetails = async (
   }
 };
 
-// Function to get class details including students and lessons
+// Get class details including students and lessons
 export const getClassDetails = async (classId: string): Promise<Class> => {
   try {
     const response = await api.get<Class>(

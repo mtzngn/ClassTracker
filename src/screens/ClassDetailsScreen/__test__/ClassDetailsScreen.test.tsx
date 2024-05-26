@@ -19,6 +19,4 @@ describe('ClassDetailsScreen Component', () => {
     expect(getByText('Gollum Smeagol')).toBeTruthy();
     expect(getByText('9:00 - 10:00')).toBeTruthy();
   });
-
-  // Add more test cases as needed
 });

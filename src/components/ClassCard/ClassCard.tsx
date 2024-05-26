@@ -1,4 +1,3 @@
-// ClassCard.tsx
 import React from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import CTText from '../../common/CTText/CTText';
