@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
-import {View, Alert, StyleSheet} from 'react-native';
+import {View, Alert, StyleSheet, TouchableOpacity} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import CTText from '../common/CTText';
-import CTInput from '../common/CTInput';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {getEmployeeDetails} from '../api/api';
+import CTText from '../../common/CTText/CTText';
+import CTInput from '../../common/CTInput/CTInput';
+import {getEmployeeDetails} from '../../api/api';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {white, primary, bg} from '../themes/colors';
+import {white, primary, bg} from '../../themes/colors';
 
 type RootStackParamList = {
   Home: undefined;
@@ -18,7 +17,8 @@ type HomeScreenProps = {
 };
 
 const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
-  const [employeeID, setEmployeeID] = useState('A2082387062');
+  //A2082387062
+  const [employeeID, setEmployeeID] = useState('');
 
   const extractClassList = (employeeData: Employee) => {
     // We don't need all the data that is available, filter here whats needed.
@@ -66,6 +66,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
         value={employeeID}
         maxLength={11}
         onChangeText={setEmployeeID}
+        placeholder="e.g. A2082387062"
       />
       <View style={styles.buttonContainer}>
         <TouchableOpacity

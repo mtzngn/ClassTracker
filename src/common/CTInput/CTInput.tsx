@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {TextInput, StyleSheet, TextInputProps} from 'react-native';
-import {lightGray} from '../themes/colors';
+import {lightGray} from '../../themes/colors';
 
 type CTInputProps = TextInputProps & {
   customStyle?: object;

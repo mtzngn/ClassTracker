@@ -1,12 +1,11 @@
-// ClassListScreen.tsx
 import React from 'react';
 import {View, Alert, ScrollView, StyleSheet} from 'react-native';
 import {RouteProp} from '@react-navigation/native';
-import ClassCard from '../components/ClassCard';
-import CTText from '../common/CTText';
-import {getClassDetails} from '../api/api';
+import ClassCard from '../../components/ClassCard/ClassCard';
+import CTText from '../../common/CTText/CTText';
+import {getClassDetails} from '../../api/api';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {bg} from '../themes/colors';
+import {bg} from '../../themes/colors';
 
 type RootStackParamList = {
   ClassList: {classList: ClassList[]};

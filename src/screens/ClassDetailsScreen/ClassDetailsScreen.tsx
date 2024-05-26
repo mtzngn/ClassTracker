@@ -1,9 +1,8 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import {RouteProp} from '@react-navigation/native';
-import {ScrollView} from 'react-native-gesture-handler';
-import CTText from '../common/CTText';
-import {bg, white, black, gray, lightGray} from '../themes/colors';
+import CTText from '../../common/CTText/CTText';
+import {bg, white, black, gray, lightGray} from '../../themes/colors';
 
 interface Student {
   forename: string;

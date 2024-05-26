@@ -1,8 +1,8 @@
 // ClassCard.tsx
 import React from 'react';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
-import CTText from '../common/CTText';
-import {white, black, primary} from '../themes/colors';
+import CTText from '../../common/CTText/CTText';
+import {white, black, primary} from '../../themes/colors';
 
 type ClassCardProps = {
   id: string;
