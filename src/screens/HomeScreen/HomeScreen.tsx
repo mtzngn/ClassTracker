@@ -42,7 +42,6 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
     }
     try {
       const employeeData: Employee = await getEmployeeDetails(employeeID);
-      console.log('employeedata', JSON.stringify(employeeData, null, 2));
       const classList: ClassList[] = extractClassList(employeeData);
 
       navigation.navigate('ClassList', {classList});

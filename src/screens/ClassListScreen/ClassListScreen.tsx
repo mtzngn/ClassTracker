@@ -79,12 +79,13 @@ const ClassListScreen: React.FC<ClassListScreenProps> = ({
   };
 
   const checkForLessons = (classes: ClassList[]) => {
+    let hasLessons = false;
     classes.forEach(item => {
       if (item.lessons.length > 0) {
-        return true;
+        hasLessons = true;
       }
     });
-    return false;
+    return hasLessons;
   };
 
   return (
