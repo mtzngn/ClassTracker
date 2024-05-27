@@ -1,8 +1,8 @@
-interface ApiResponse<T> {
+export interface ApiResponse<T> {
   data: T;
 }
 
-interface Employee {
+export interface Employee {
   id: string;
   name: string;
   data?: {
@@ -10,7 +10,7 @@ interface Employee {
   };
 }
 
-interface ClassList {
+export interface ClassList {
   id: string;
   name: string;
   lessons: {
@@ -21,7 +21,7 @@ interface ClassList {
   }[];
 }
 
-interface Class {
+export interface Class {
   id: string;
   name: string;
   lessons: ApiResponse<Lesson[]>;
@@ -30,20 +30,26 @@ interface Class {
   };
 }
 
-interface Lesson {
+export interface Lesson {
   id: string;
   day: string;
   period: ApiResponse<Period>;
   employee: string;
 }
 
-interface Student {
+export interface Student {
   forename: string;
   surname: string;
 }
 
-interface Period {
+export interface Period {
   day: string;
   start_time: string;
   end_time: string;
 }
+
+export type RootStackParamList = {
+  Home: undefined;
+  ClassList: {classList: ClassList[]};
+  ClassDetails: {studentList: Student[]; startTime: string; endTime: string};
+};

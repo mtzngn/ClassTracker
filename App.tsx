@@ -5,8 +5,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen/HomeScreen';
 import ClassListScreen from './src/screens/ClassListScreen/ClassListScreen';
 import ClassDetailsScreen from './src/screens/ClassDetailsScreen/ClassDetailsScreen';
+import {RootStackParamList} from './src/types';
 
-const MainStack = createStackNavigator();
+const MainStack = createStackNavigator<RootStackParamList>();
 
 const App: React.FC = () => {
   return (

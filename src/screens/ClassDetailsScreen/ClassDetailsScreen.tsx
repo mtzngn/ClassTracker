@@ -1,20 +1,14 @@
 import React from 'react';
 import {View, StyleSheet, ScrollView} from 'react-native';
-import {RouteProp} from '@react-navigation/native';
+import {StackScreenProps} from '@react-navigation/stack';
 import CTText from '../../common/CTText/CTText';
 import {bg, white, black, gray, lightGray} from '../../themes/colors';
+import {RootStackParamList} from '../../types';
 
-interface Student {
-  forename: string;
-  surname: string;
-}
-
-interface ClassDetailsScreenProps {
-  route: RouteProp<
-    {params: {studentList: Student[]; startTime: string; endTime: string}},
-    'params'
-  >;
-}
+type ClassDetailsScreenProps = StackScreenProps<
+  RootStackParamList,
+  'ClassDetails'
+>;
 
 const ClassDetailsScreen: React.FC<ClassDetailsScreenProps> = ({route}) => {
   const {studentList, startTime, endTime} = route.params;

@@ -6,11 +6,7 @@ import CTInput from '../../common/CTInput/CTInput';
 import {getEmployeeDetails} from '../../api/api';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {white, primary, bg} from '../../themes/colors';
-
-type RootStackParamList = {
-  Home: undefined;
-  ClassList: {classList: ClassList[]};
-};
+import {RootStackParamList, Employee, Class, ClassList} from '../../types';
 
 type HomeScreenProps = {
   navigation: StackNavigationProp<RootStackParamList, 'Home'>;
@@ -46,6 +42,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
     }
     try {
       const employeeData: Employee = await getEmployeeDetails(employeeID);
+      console.log('employeedata', JSON.stringify(employeeData, null, 2));
       const classList: ClassList[] = extractClassList(employeeData);
 
       navigation.navigate('ClassList', {classList});

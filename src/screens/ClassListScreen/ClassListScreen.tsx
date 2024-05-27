@@ -1,26 +1,18 @@
 import React from 'react';
 import {View, Alert, ScrollView, StyleSheet} from 'react-native';
-import {RouteProp} from '@react-navigation/native';
 import ClassCard from '../../components/ClassCard/ClassCard';
 import CTText from '../../common/CTText/CTText';
 import {getClassDetails} from '../../api/api';
-import {StackNavigationProp} from '@react-navigation/stack';
+import {StackScreenProps} from '@react-navigation/stack';
 import {bg} from '../../themes/colors';
+import {RootStackParamList, ClassList, Class} from '../../types/index';
 
-type RootStackParamList = {
-  ClassList: {classList: ClassList[]};
-  ClassDetails: {studentList: Student[]; startTime: string; endTime: string};
-};
-
-interface ClassListScreenProps {
-  route: RouteProp<{params: {classList: ClassList[]}}, 'params'>;
-  navigation: StackNavigationProp<RootStackParamList, 'ClassList'>;
-}
+type ClassListScreenProps = StackScreenProps<RootStackParamList, 'ClassList'>;
 
 const ClassListScreen: React.FC<ClassListScreenProps> = ({
   navigation,
   route,
-}: ClassListScreenProps) => {
+}) => {
   const {classList} = route.params;
 
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
@@ -86,9 +78,18 @@ const ClassListScreen: React.FC<ClassListScreenProps> = ({
     ));
   };
 
+  const checkForLessons = (classes: ClassList[]) => {
+    classes.forEach(item => {
+      if (item.lessons.length > 0) {
+        return true;
+      }
+    });
+    return false;
+  };
+
   return (
     <ScrollView style={styles.container}>
-      {classList && classList.length > 0 ? (
+      {checkForLessons(classList) ? (
         days.map(
           (day, index) =>
             classesForDay(classList, day).length > 0 && (
