@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {Employee, Class} from '../types';
 
 // Base URL and School ID
 const BASE_URL = 'https://api.wonde.com/v1.0/schools';
@@ -20,7 +21,7 @@ export const getEmployeeDetails = async (
     const response = await api.get<Employee>(
       `/${SCHOOL_ID}/employees/${employeeId}?include=classes.lessons.period`,
     );
-
+    console.log('employee data:', JSON.stringify(response.data, null, 2));
     return response.data;
   } catch (error) {
     console.error('Error fetching employee details:', error);
